@@ -1,0 +1,140 @@
+# Rules of Game
+# Snake vs. Water: Snake drinks the water hence wins.
+# Water vs. Gun: The gun will drown in water, hence a point for water.
+# Gun vs. Snake: Gun will kill the snake and win.
+
+import random
+import time
+
+print("Welcome in to the Snake, Water, Gun, Game")
+
+chances = 10
+tries = 0
+user_points = 0
+computer_points = 0
+
+option = ["s", "w", "g"]
+
+print("Enter You Name")
+a = input()
+name = a.capitalize()
+
+while tries < 10:
+
+    computer = random.choice(option)
+    print("s for Snake, w for water, and g for gun")
+    userinput = input()
+
+    if userinput == computer:
+        print(f"Your choice is {userinput} and computer's choice is {computer}")
+        print("So, Tied.")
+        print(" 1 point is given to each")
+        user_points += 1
+        computer_points += 1
+        chances -= 1
+        tries += 1
+
+        print("Your points are", user_points)
+        print("Computer points are", computer_points)
+        print("Chances left are", chances)
+
+    elif userinput == 's' and computer == 'w':
+
+        print(f"Your choice is {userinput} and computer's choice is {computer}"
+              f"\t so Snake will drink the water")
+        print(f" 1 point goes to {name}")
+        user_points += 1
+        chances -= 1
+        tries += 1
+
+        print("Your points are", user_points)
+        print("Computer points are", computer_points)
+        print("Chances left are", chances)
+
+    elif userinput == 'w' and computer == 'g':
+
+        print(f"Your choice is {userinput} and computer's choice is {computer}"
+              f"\t so gun will drown in the water")
+        print(f"1 point goes to {name}")
+        user_points += 1
+        chances -= 1
+        tries += 1
+
+        print("Your points are", user_points)
+        print("Computer points are", computer_points)
+        print("Chances left are", chances)
+
+    elif userinput == 'g' and computer == 's':
+
+        print(f"Your choice is {userinput} and computer's choice is {computer}"
+              f"\t so Gun will kill the Snake")
+        print(f"1 point goes to {name}")
+        user_points += 1
+        chances -= 1
+        tries += 1
+
+        print("Your points are", user_points)
+        print("Computer points are", computer_points)
+        print("Chances left are", chances)
+
+    elif computer == 's' and userinput == 'w':
+
+        print(f"Your choice is {userinput} and computer's choice is {computer}"
+              f"\t so Snake wll drink the water")
+        print(" 1 point goes to computer")
+        computer_points += 1
+        chances -= 1
+        tries += 1
+
+        print("Your points are", user_points)
+        print("Computer points are", computer_points)
+        print("Chances left are", chances)
+
+    elif computer == 'w' and userinput == 'g':
+
+        print(f"Your choice is {userinput} and computer's choice is {computer}"
+              f"\t so gun will drown in the water")
+        print(" 1 point goes to computer")
+        computer_points += 1
+        chances -= 1
+        tries += 1
+
+        print("Your points are", user_points)
+        print("Computer points are", computer_points)
+        print("Chances left are", chances)
+
+    elif computer == 'g' and userinput == 's':
+
+        print(f"Your choice is {userinput} and computer's choice is {computer}"
+              f"\t so Gun will kill the Snake")
+        print("1 point goes to Computer")
+        computer_points += 1
+        chances -= 1
+        tries += 1
+
+        print("Your points are", user_points)
+        print("Computer points are", computer_points)
+        print("Chances left are", chances)
+
+else:
+
+    print("\nResults are Processing"
+          "  \nPlease Wait.....")
+    time.sleep(4)
+
+    if user_points == computer_points:
+
+        print(f"\n{name}'s points {user_points} are equal to {computer_points}"
+                f" so game is tied ")
+
+    elif user_points > computer_points:
+
+        print(f"\n {name}'s points are {user_points} more then Computer's {computer_points}")
+        print(f"\n{name} is winner"
+                f"  bad luck Computer, Better luck next time")
+
+    elif user_points < computer_points:
+
+        print(f"\ncomputer's points are {computer_points} more then {name}'s points{user_points}")
+        print(f" \nComputer is winner"
+                f"  bad luck {name}, Better luck next time")
