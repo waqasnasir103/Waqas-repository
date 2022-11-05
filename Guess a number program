@@ -1,37 +1,68 @@
-print("Welcome into guess the number game")
-desired_number = 35
-num_of_guesses = 9
-tries = 1
-print("Enter your number")
-entered_num = int(input())
+import time
+import random
+
+print("Welcome to the Guess a Number Game")
+print("Number lies between 1 and 100")
+
+actual_num = random.randint(1, 100)
+
+choices = 10
+
+tries = 0
+
+print("Enter you number")
+userinput = int(input())
+
 while True:
-    if num_of_guesses >=1:
-        if entered_num > desired_number:
-            print("Desired number is less then entered number")
-            print("Your have", num_of_guesses, "left")
-            num_of_guesses = num_of_guesses - 1
-            tries = tries + 1
-            entered_num = int(input())
-            continue
-        elif entered_num < desired_number:
-            print("Desired number is greater then entered number")
-            print("Your have", num_of_guesses, "left")
-            num_of_guesses = num_of_guesses - 1
-            tries = tries + 1
-            entered_num = int(input())
-            continue
-        elif entered_num == desired_number:
-            print("Congratulation you have guessed the right number")
-            if tries == 1:
-                print("You guessed the number in", tries, "try")
-            else:
-                print("You guessed the number in", tries, "tries")
-            tries = tries + 1
-            break
-    elif num_of_guesses == 0:
-        print("You have consumed all chances you have\n"
-              "Better luck next time")
-        print("Game over")
+
+    if userinput == actual_num:
+        tries += 1
+        print("Congratulation, You Guessed the number in", tries, "tries")
+
         break
+
+    elif userinput > actual_num:
+        
+        print("You entered larger number")
+        print("Actual number is smaller")
+        choices -= 1
+        tries += 1
+        
+        print("You have", choices, "left")
+        
+        time.sleep(0.25)
+        
+        if choices < 1:
+            print("Game over!"
+                  "You have consumed all your chances")
+            break
+
+        print("Enter you number")
+        userinput = int(input())
+
+        continue
+
+    elif userinput < actual_num:
+        
+        print("You entered a smaller number")
+        print("Actual number is larger")
+        choices -= 1
+        tries += 1
+        
+        print("You have", choices, "left")
+        
+        time.sleep(0.25)
+        
+        if choices < 1:
+            print("Game over!"
+                  "You have consumed all your chances")
+            break
+
+        print("Enter you number")
+        userinput = int(input())
+
+        continue
+
     else:
-        print("")
+        pass
+    
