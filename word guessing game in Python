@@ -1,0 +1,115 @@
+import word # name of the file which contains all the words to be guessed by the user
+import time
+import random
+import os
+
+
+def again_play():
+    print('Press Y for play again or N for exit')
+    user_input = input().upper()
+    while user_input not in ['Y', 'N']:
+        user_input = input().upper()
+    if user_input == 'Y':
+        return True
+    else:
+        return False
+
+
+def actual_game(word_item):
+    display = '_' * len(word_item)
+    count = 0
+    chances = 5
+    word_list = list(word_item)
+    guessed_chars = []
+    while count < chances:
+        user_input = input(f'Hangman word: {display}, enter your guess\n').strip()
+        while len(user_input) == 0 or len(user_input) > 1:
+            print('Invalid input, please enter 1 character at a time')
+            user_input = input(f'Hangman word: {display}, enter your guess').strip()
+        if user_input in guessed_chars:
+            print('You already enter this character')
+            continue
+        if user_input in word_list:
+            word_list.remove(user_input)
+            index = word_item.find(user_input)
+            display = display[:index] + user_input + display[index + 1:]
+            if word_list.count(user_input) > 1:
+                word_list.remove(user_input)
+                index = word_item.find(user_input)
+                display = display[:index] + user_input + display[index + 1:]
+        else:
+            count += 1
+            guessed_chars.append(user_input)
+            if count == 1:
+                print('   _____ \n'
+                      '  |      \n'
+                      '  |      \n'
+                      '  |      \n'
+                      '  |      \n'
+                      '  |      \n'
+                      '  |      \n'
+                      '__|__\n')
+                print(f'You entered a wrong guess, '
+                      f'you have {chances - count} left')
+            elif count == 2:
+                count += 1
+                print('   _____ \n'
+                      '  |      \n'
+                      '  |      \n'
+                      '  |      \n'
+                      '  |      \n'
+                      '  |      \n'
+                      '  |      \n'
+                      '__|__\n')
+                print(f'You entered a wrong guess, '
+                      f'you have {chances - count} left')
+            elif count == 3:
+                count += 1
+                print('   _____ \n'
+                      '  |      \n'
+                      '  |      \n'
+                      '  |      \n'
+                      '  |      \n'
+                      '  |      \n'
+                      '  |      \n'
+                      '__|__\n')
+                print(f'You entered a wrong guess, '
+                      f'you have {chances - count} left')
+            elif count == 4:
+                count += 1
+                print('   _____ \n'
+                      '  |      \n'
+                      '  |      \n'
+                      '  |      \n'
+                      '  |      \n'
+                      '  |      \n'
+                      '  |      \n'
+                      '__|__\n')
+                print(f'You entered a wrong guess, '
+                      f'you have {chances - count} left')
+        if display == word_item:
+            print(f'Congrats, you\'ve successfully guessed the word {display}')
+            exit()
+
+
+def game():
+    print('Welcome into the Hangman Game')
+    time.sleep(2)
+    print('Please Enter your name')
+    name = input().capitalize()
+    print(f'Welcome {name}, Best of Luck')
+    print('This game is about to start')
+    time.sleep(2)
+    os.system('cls' if os.name == 'nt' else 'clear')
+    play = True
+    while play:
+        words = word.words
+        ran_word = random.choice(words)
+        actual_game(ran_word)
+        play = again_play()
+    print('Thanks for playing')
+    exit()
+
+
+if __name__ == '__main__':
+    game()
