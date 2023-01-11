@@ -1,0 +1,130 @@
+import os
+import time
+
+print("Welcome into the Words to numbers game\n"
+      "Disclaimer: It only works for zero to thousand numbers")
+ten_numbers = ['one', 'two', 'three', 'four', 'five', 'six',
+               'seven', 'eight', 'nine', 'ten']
+twenty_num = ['eleven', 'twelve', 'thirteen', 'fourteen',
+              'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen']
+thirty_to_hun = ['twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy',
+                 'eighty', 'ninty']
+more_then_hun = ['hundred', 'thousand']
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+
+
+def working():
+    print('Enter your desired number in words')
+    user_input = input()
+    split_input = user_input.split(' ')
+    if len(split_input) == 1:
+        for n in ten_numbers:
+            if n == split_input[0] and split_input[0] != 'ten' and split_input[0] != 'zero':
+                index = ten_numbers.index(n)
+                time.sleep(1)
+                print(numbers[index])
+            elif split_input[0] == 'ten':
+                time.sleep(1)
+                print(10)
+                break
+            elif split_input[0] == 'zero':
+                time.sleep(1)
+                print(0)
+                break
+        for n in twenty_num:
+            if split_input[0] == n and split_input[0] != 'twenty':
+                index = twenty_num.index(n)
+                time.sleep(1)
+                print(str(numbers[0]) + str(numbers[index]))
+        for n in thirty_to_hun:
+            if split_input[0] == n and split_input[0] != 'hundred':
+                index = thirty_to_hun.index(n)
+                time.sleep(1)
+                print(str(numbers[index + 1]) + str(numbers[9]))
+            elif split_input[0] == 'hundred':
+                time.sleep(1)
+                print(100)
+                break
+    elif len(split_input) == 2:
+        if split_input[1] == 'hundred':
+            for n in ten_numbers:
+                if split_input[0] == n and split_input[0] != 'ten':
+                    index = ten_numbers.index(n)
+                    time.sleep(1)
+                    print(str(numbers[index]) + '00')
+        for n in thirty_to_hun:
+            if split_input[0] == n:
+                index = thirty_to_hun.index(n)
+                for i in ten_numbers:
+                    if split_input[1] == i:
+                        i_index = ten_numbers.index(i)
+                        time.sleep(1)
+                        print(str(numbers[index + 1]) + str(numbers[i_index]))
+    elif len(split_input) == 3 and split_input[1] == 'hundred':
+        for n in ten_numbers:
+            if split_input[0] == n and split_input[0] != 'ten':
+                index = ten_numbers.index(n)
+                for i in ten_numbers:
+                    if i == split_input[2] and split_input[2] != 'ten':
+                        i_index = ten_numbers.index(i)
+                        time.sleep(1)
+                        print(str(numbers[index]) + '0' + str(numbers[i_index]))
+                    elif split_input[2] == 'ten':
+                        time.sleep(1)
+                        print(str(numbers[index]) + '10')
+                        break
+                else:
+                    for j in twenty_num:
+                        if split_input[2] == j:
+                            j_index = twenty_num.index(j)
+                            time.sleep(1)
+                            print(str(numbers[index]) + '1' + str(numbers[j_index]))
+                            break
+                    for k in thirty_to_hun:
+                        if split_input[2] == k:
+                            k_index = thirty_to_hun.index(k)
+                            time.sleep(1)
+                            print(str(numbers[index]) + str(numbers[k_index + 1]) + '0')
+    elif len(split_input) == 4 and split_input[1] == 'hundred':
+        a = split_input[0]
+        if a in ten_numbers:
+            a_index = ten_numbers.index(a)
+            b = split_input[2]
+            if b in thirty_to_hun:
+                b_index = thirty_to_hun.index(b)
+                c = split_input[3]
+                if c in ten_numbers:
+                    c_index = ten_numbers.index(c)
+                    time.sleep(1)
+                    print(str(numbers[a_index]) + str(numbers[b_index + 1]) + str(c_index + 1))
+
+
+def run_again():
+    time.sleep(1)
+    print('If you wanna run this program again, Press "Y", otherwise, Press "N"')
+    user_input = input().upper()
+    while user_input not in ['Y', 'N']:
+        time.sleep(2)
+        print('Enter valid option')
+        user_input = input().upper()
+        continue
+    if user_input == 'Y':
+        return True
+    else:
+        print('Exit')
+
+        exit()
+
+
+def control():
+    os.system('cls' if os.name == 'nt' else 'clear')
+    flag = True
+    while flag:
+        working()
+        time.sleep(.5)
+        run_again()
+
+
+if __name__ == '__main__':
+    control()
