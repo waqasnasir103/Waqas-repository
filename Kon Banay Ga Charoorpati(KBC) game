@@ -1,0 +1,139 @@
+# import random
+import questions as q # Name of the file which has the questions and their correct answers
+
+print("Welcome to the Kon Banayga Caroorpati")
+print('There are 10 questions, and every question would give you different amount'
+      '\n Q#1 5000'
+      '\n Q#2 10000'
+      '\n Q#3 50000'
+      '\n Q#4 100000'
+      '\n Q#5 500000'
+      '\n Q#6 1000000'
+      '\n Q#7 2000000'
+      '\n Q#8 5000000'
+      '\n Q#9 7500000'
+      '\nQ#10 10000000')
+questions_count = 0
+prize = [5000, 10000, 50000, 100000, 500000,
+         1000000, 2000000, 5000000, 7500000,
+         10000000]
+amount_win = []
+print("Enter Your Choice")
+print("A,B,C,D")
+ques = [q.q_1, q.q_2, q.q_3, q.q_4, q.q_5, q.q_6,
+        q.q_7, q.q_8, q.q_9, q.q_10]
+while questions_count < 10:
+    for i in range(len(ques)):
+        if ques[i] == q.q_1:
+            print(q.q_1)
+            print(q.ans_1)
+            user_ans = input().upper()
+            questions_count += 1
+            if user_ans == q.ans_1[0][0]:
+                amount_win.append(prize[i])
+                print('You answer is correct')
+            else:
+                print(f'You answer is wrong, correct option is {q.ans_1[0]}')
+                break
+        elif ques[i] == q.q_2:
+            print(q.q_2)
+            print(q.ans_2)
+            questions_count += 1
+            user_ans = input().upper()
+            if user_ans == q.ans_2[1][0]:
+                amount_win.append(prize[i])
+                print('You answer is correct')
+            else:
+                print(f'You answer is wrong, correct option is {q.ans_2[1]}')
+                break
+        elif ques[i] == q.q_3:
+            print(q.q_3)
+            print(q.ans_3)
+            user_ans = input().upper()
+            questions_count += 1
+            if user_ans == q.ans_3[1][0]:
+                amount_win.append(prize[i])
+                print('You answer is correct')
+            else:
+                print(f'You answer is wrong, correct option is {q.ans_2[1]}')
+                break
+        elif ques[i] == q.q_4:
+            print(q.q_4)
+            print(q.ans_4)
+            user_ans = input().upper()
+            questions_count += 1
+            if user_ans == q.ans_4[3][0]:
+                amount_win.append(prize[i])
+                print('You answer is correct')
+            else:
+                print(f'You answer is wrong, correct option is {q.ans_4[3]}')
+                break
+        elif ques[i] == q.q_5:
+            print(q.q_5)
+            print(q.ans_5)
+            user_ans = input().upper()
+            questions_count += 1
+            if user_ans == q.ans_5[3][0]:
+                amount_win.append(prize[i])
+                print('You answer is correct')
+            else:
+                print(f'You answer is wrong, correct option is {q.ans_5[3]}')
+                break
+        elif ques[i] == q.q_6:
+            print(q.q_6)
+            print(q.ans_6)
+            user_ans = input().upper()
+            questions_count += 1
+            if user_ans == q.ans_6[1][0]:
+                amount_win.append(prize[i])
+                print('You answer is correct')
+            else:
+                print(f'You answer is wrong, correct option is {q.ans_6[1]}')
+                break
+        elif ques[i] == q.q_7:
+            print(q.q_7)
+            print(q.ans_7)
+            user_ans = input().upper()
+            questions_count += 1
+            if user_ans == q.ans_7[2][0]:
+                amount_win.append(prize[i])
+                print('You answer is correct')
+            else:
+                print(f'You answer is wrong, correct option is {q.ans_7[2]}')
+                break
+        elif ques[i] == q.q_8:
+            print(q.q_8)
+            print(q.ans_8)
+            user_ans = input().upper()
+            questions_count += 1
+            if user_ans == q.ans_8[2][0]:
+                amount_win.append(prize[i])
+                print('You answer is correct')
+            else:
+                print(f'You answer is wrong, correct option is {q.ans_8[2]}')
+                break
+        elif ques[i] == q.q_9:
+            print(q.q_9)
+            print(q.ans_9)
+            user_ans = input().upper()
+            questions_count += 1
+            if user_ans == q.ans_9[1][0]:
+                amount_win.append(prize[i])
+                print('You answer is correct')
+            else:
+                print(f'You answer is wrong, correct option is {q.ans_9[1]}')
+                break
+        elif ques[i] == q.q_10:
+            print(q.q_10)
+            print(q.ans_10)
+            user_ans = input().upper()
+            questions_count += 1
+            if user_ans == q.ans_10[1][0]:
+                amount_win.append(prize[i])
+                print('You answer is correct')
+            else:
+                print(f'You answer is wrong, correct option is {q.ans_10[1]}')
+                break
+    print(f'You won {amount_win[questions_count]}')
+    break
+print("Thanks for participating")
