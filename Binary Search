@@ -1,0 +1,24 @@
+def binary_search(lis, s, e, item):
+    while s <= e:
+        mid = (s + e) // 2
+        if item == lis[mid]:
+            return mid
+        else:
+            if item < lis[mid]:
+                e = mid - 1
+            else:
+                s = mid + 1
+    return -2
+
+
+list_a = [9, 6, 19, 99, 21, 56, 1, 87, 36, 24, 29, 92, 85, 76, 78]
+list_a.sort()
+start = 0
+end = len(list_a) - 1
+print('Enter number to be searched')
+user_input = int(input())
+result = binary_search(list_a, start, end, user_input)
+if result != -2:
+    print(f' Searched Item {user_input} lies at {result}th index')
+else:
+    print(f'Searched Item {user_input} is not available in the list')
