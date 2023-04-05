@@ -1,0 +1,45 @@
+def addition(first, second):
+    """ This function will add two numbers"""
+    return first + second
+
+
+def subtraction(first, second):
+    return first - second
+
+
+def multiply(first, second):
+    return first * second
+
+
+def division(first, second):
+    return first / second
+
+
+def main():
+    first_num = float(input('Enter first number  '))
+    operations = {'+': addition,
+                  '-': subtraction,
+                  '*': multiply,
+                  '/': division
+                  }
+    for symbols in operations:
+        print(symbols)
+    end_program = False
+    while not end_program:
+        next_num = float(input('Enter next number  '))
+        operation = input('Pickup your operation choice  ')
+        function_choice = operations[operation]
+        answer = function_choice(first_num, next_num)
+        print(f'{first_num} {operation} {next_num} = {answer}')
+        direction = input(f'If you want another operation with {answer} press "n"\n'
+                          'or if you want another calculation press "c"  \n'
+                          'to exit the program type "q"  ').lower()
+        if direction == 'n':
+            first_num = answer
+        elif direction == 'c':
+            main()
+        elif direction == 'q':
+            exit()
+
+
+main()
