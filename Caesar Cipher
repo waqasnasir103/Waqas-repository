@@ -1,0 +1,31 @@
+def caesar(message, shift, direction):
+    output = ''
+    for letter in message:
+        position = alphabet.index(letter)
+        if direction == 'encode':
+            new_position = position + shift
+            new_letter = alphabet[new_position]
+            output += new_letter
+        elif direction == 'decode':
+            new_position = position - shift
+            new_letter = alphabet[new_position]
+            output += new_letter
+    return output
+
+
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
+            'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+            'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
+            'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+            'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+while True:
+    user_input = input('Do you want to encrypt or decrypt you message, yes, or no\n  ')
+    if user_input == 'yes':
+        direction = input("Type 'encode' for encryption, and 'decode' for decryption\n  ").lower()
+        message = input('Enter your massage\n   ').lower()
+        shift = int(input('Enter Shift amount \n  '))
+        print(caesar(message, shift, direction))
+
+    elif user_input == 'no':
+        exit()
