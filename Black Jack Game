@@ -1,0 +1,50 @@
+import random
+
+# A list of cards is created
+cards = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+print('All face cards have a value of 10')
+start = input('Do you want to play Blackjack game, hit "y" or "n" ').lower()
+user_cards = []
+computer_cards = []
+
+if start == 'y':
+    for i in range(2):
+        random_cards = random.choice(cards)
+        user_cards.append(random_cards)
+    print(f'User cards are {user_cards}')
+    random_cards = random.choice(cards)
+    computer_cards.append(random_cards)
+    print(f'Computer cards are {computer_cards}')
+    another_card = input('Type "y" to get another card, or "n" to pass  ')
+    if another_card == 'n':
+        random_cards = random.choice(cards)
+        computer_cards.append(random_cards)
+        print(f'Your final hand {user_cards}')
+        print(f'Computer final hand {computer_cards}')
+        user_sum = sum(user_cards)
+        com_sum = sum(computer_cards)
+        if user_sum > com_sum:
+            print('User has won')
+
+        else:
+            print('Computer has won')
+    elif another_card == 'y':
+        random_cards = random.choice(cards)
+        computer_cards.append(random_cards)
+        random_cards = random.choice(cards)
+        user_cards.append(random_cards)
+        print(f'Your final hand {user_cards}')
+        print(f'Computer final hand {computer_cards}')
+        user_sum = sum(user_cards)
+        com_sum = sum(computer_cards)
+
+        if user_sum > 21 > com_sum:
+            print(f'User sum {user_sum} exceeds 21 and computer sum is {com_sum}\n'
+                  f'so computer won the game')
+        elif user_sum > com_sum:
+            print(f'User has won with total sum {user_sum} and computer sum is {com_sum}')
+        else:
+            print(f'Computer has won with total sum {com_sum} and user sum is {user_sum}')
+
+elif start == 'n':
+    exit()
