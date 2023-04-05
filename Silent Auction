@@ -1,0 +1,29 @@
+import os
+print('Welcome to the secret auction program')
+info_log = {}
+end_prgram = False
+while not end_prgram:
+    name_ = input('Enter you name.   ').lower()
+    bid_amount = int(input('Enter your bid amount..  $'))
+    user_input = input('Do you want another bidder? yes or no  ').lower()
+    info_log[name_] = bid_amount
+    if user_input == 'yes':
+        os.system("cls")
+        continue
+    elif user_input == 'no':
+        break
+    else:
+        print('Select valid option')
+        user_input = input('Do you want another bidder? yes or no  ').lower()
+
+largest = 0
+person = ''
+for key in info_log:
+    if info_log[key] > largest:
+        largest = info_log[key]
+        person = key
+
+# person = {i for i in info_log if info_log[i] == largest}
+# print(person)
+print(f"{person} has placed the largest bid of ${largest}")
+
