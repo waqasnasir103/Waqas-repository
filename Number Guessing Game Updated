@@ -1,0 +1,55 @@
+import random
+from arto import art
+
+
+def target_number():
+    lis = []
+    for i in range(1, 101):
+        lis.append(i)
+    num = random.choice(lis)
+    return num
+
+
+def program(num, user_choice):
+    tries = 0
+    if user_choice == 'h':
+        tries = 5
+    elif user_choice == 'e':
+        tries = 10
+    attempts = 0
+    while tries > 0:
+        user_choice = int(input('Enter your guess   '))
+        if user_choice > num:
+            tries -= 1
+            attempts += 1
+            print('Choose a lower number')
+            print(f'You have {tries} tries left')
+        elif user_choice < num:
+            tries -= 1
+            attempts += 1
+            print('Choose a higher number')
+            print(f'You have {tries} tries left')
+        elif user_choice == num:
+            tries -= 1
+            attempts += 1
+            print(f'You successfully guessed the number {num} in {attempts} tries  ')
+            break
+
+    else:
+        print(f'Unfortunately you did not guessed the number in {attempts} tries\n'
+              'Game Over')
+
+print(art)
+print('Welcome to the Number Guessing game')
+print('I\'m thinking of a number between 1 and 100')
+end_game = False
+while not end_game:
+    choice = input('Choose your difficulty level  \n'
+                   'press "h" for hard, and "e" for easy    ').lower()
+    if choice == 'h' or choice == 'e':
+        program(target_number(), choice)
+        end_game = True
+    else:
+        print('You enter an invalid input   \n'
+              'please try again    ')
+        continue
