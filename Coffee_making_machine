@@ -1,0 +1,96 @@
+MENU = {
+    "espresso": {
+        "ingredients": {
+            "water": 50,
+            "coffee": 18,
+        },
+        "cost": 1.5,
+    },
+    "latte": {
+        "ingredients": {
+            "water": 200,
+            "milk": 150,
+            "coffee": 24,
+        },
+        "cost": 2.5,
+    },
+    "cappuccino": {
+        "ingredients": {
+            "water": 250,
+            "milk": 100,
+            "coffee": 24,
+        },
+        "cost": 3.0,
+    }
+}
+profit = 0
+resources = {
+    "water": 300,
+    "milk": 200,
+    "coffee": 100}
+
+
+def is_enough_resources(order_ingredients):
+    """ Return resources status"""
+    for item in order_ingredients:
+        if order_ingredients[item] >= resources[item]:
+            print(f'Sorry there is not enough {item}')
+            return False
+    return True
+
+
+def coin_counter():
+    """ This function counts user coins and calculates the total amount"""
+    print('Enter number of quarter coins')
+    quarter = int(input()) * 0.5
+    print('Enter number of dime coins')
+    dime = int(input()) * 0.10
+    print('Enter number of nickel coins')
+    nickel = int(input()) * 0.05
+    print('Enter number of penny coins')
+    penny = int(input()) * 0.01
+    total_amount = quarter + dime + nickel + penny
+    return total_amount
+
+
+def transactional_status(money_received, drink_cost):
+    if money_received >= drink_cost:
+        change = round(money_received - drink_cost, 2)
+        print(f'Here is your change ${change}')
+        global profit
+        profit += drink_cost
+        return True
+    else:
+        print('Sorry, Inserted money is not sufficient to make this transaction')
+        return False
+
+
+def resource_counter(coffee_flavour, order_ingredients):
+    # b = MENU[coffee_flavour]['ingredients']
+    # b.setdefault('milk', 0)
+    # a = resources
+    # desired_output = {k1: v1 - v2 for k1, v1 in a.items() for k2, v2 in b.items() if k1 == k2}
+    # return desired_output
+    for item in order_ingredients:
+        resources[item] -= order_ingredients[item]
+    print(f'Here is your {coffee_flavour} ')
+
+
+end_program = False
+while not end_program:
+    choice = input('What would you like? espresso, latte, cappuccino ')
+    if choice == 'off':
+        end_program = True
+    elif choice == 'report':
+        print(f'Machine have following resources\n'
+              f'Water {resources["water"]} ml\n'
+              f'Milk {resources["milk"]} ml\n'
+              f'Coffee {resources["coffee"]} g\n'
+              f'and Profit is $ {profit}')
+    else:
+        drink = MENU[choice]
+        if is_enough_resources(drink['ingredients']):
+            payment = coin_counter()
+            if transactional_status(payment, drink['cost']):
+                resource_counter(choice, drink['ingredients'])
+
