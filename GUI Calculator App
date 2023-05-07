@@ -1,6 +1,7 @@
 from tkinter import Tk, Label, Button, Entry, messagebox
 import sys
 import warnings
+
 warnings.filterwarnings('ignore', category=DeprecationWarning)
 
 win = Tk()
@@ -33,59 +34,71 @@ def delete():
     entry_1.delete(first=len(a) - 1, last='end')
 
 
-label_1 = Label(text='Entry', font=('arial', 17, 'normal'))
+label_1 = Label(win, text='Entry', font=('arial', 17, 'normal'))
 label_1.grid(row=0, column=0)
-label_2 = Label(text='Answer', font=('arial', 17, 'normal'))
+label_2 = Label(win, text='Answer', font=('arial', 17, 'normal'))
 label_2.grid(row=2, column=0)
 
-
-entry_1 = Entry(width=20, font=('arial', 20, 'normal'))
+entry_1 = Entry(win, width=20, font=('arial', 20, 'normal'))
 entry_1.grid(row=0, column=1, columnspan=4)
-entry_2 = Entry(width=20, font=('arial', 20, 'normal'))
+entry_2 = Entry(win, width=20, font=('arial', 20, 'normal'))
 entry_2.grid(row=2, column=1, columnspan=4)
 
-
-button_9 = Button(text='9', width=10, height=2, padx=2, pady=2, relief='raised', command=lambda: entry_1.insert('end','9'))
+button_9 = Button(win, text='9', width=10, height=2, padx=2, pady=2, relief='raised',
+                  command=lambda: entry_1.insert('end', '9'))
 button_9.grid(row=3, column=0, columnspan=1)
-button_8 = Button(text='8', width=10, height=2, padx=2, pady=2, relief='raised', command=lambda: entry_1.insert('end', '8'))
+button_8 = Button(win, text='8', width=10, height=2, padx=2, pady=2, relief='raised',
+                  command=lambda: entry_1.insert('end', '8'))
 button_8.grid(row=3, column=1)
-button_7 = Button(text='7', width=10, height=2, padx=2, pady=2, relief='raised', command=lambda: entry_1.insert('end', '7'))
+button_7 = Button(win, text='7', width=10, height=2, padx=2, pady=2, relief='raised',
+                  command=lambda: entry_1.insert('end', '7'))
 button_7.grid(row=3, column=2)
-button_del = Button(text='del', width=10, height=2, padx=2, pady=2, relief='raised', command=delete)
+button_del = Button(win, text='del', width=10, height=2, padx=2, pady=2, relief='raised', command=delete)
 button_del.grid(row=3, column=3)
-button_x = Button(text='*', width=10, height=2, padx=2, pady=2, relief='raised', command=lambda: entry_1.insert('end','*'))
+button_x = Button(win, text='*', width=10, height=2, padx=2, pady=2, relief='raised',
+                  command=lambda: entry_1.insert('end', '*'))
 button_x.grid(row=3, column=4)
-button_6 = Button(text='6', width=10, height=2, padx=2, pady=2, relief='raised', command=lambda: entry_1.insert('end', '6'))
+button_6 = Button(win, text='6', width=10, height=2, padx=2, pady=2, relief='raised',
+                  command=lambda: entry_1.insert('end', '6'))
 button_6.grid(row=4, column=0, columnspan=1)
-button_5 = Button(text='5', width=10, height=2, padx=2, pady=2, relief='raised', command=lambda: entry_1.insert('end', '5'))
+button_5 = Button(win, text='5', width=10, height=2, padx=2, pady=2, relief='raised',
+                  command=lambda: entry_1.insert('end', '5'))
 button_5.grid(row=4, column=1)
-button_4 = Button(text='4', width=10, height=2, padx=2, pady=2, relief='raised', command=lambda: entry_1.insert('end', '4'))
+button_4 = Button(win, text='4', width=10, height=2, padx=2, pady=2, relief='raised',
+                  command=lambda: entry_1.insert('end', '4'))
 button_4.grid(row=4, column=2)
-button_modulus = Button(text='%', width=10, height=2, padx=2, pady=2, relief='raised', command=lambda: entry_1.insert('end','%'))
+button_modulus = Button(win, text='%', width=10, height=2, padx=2, pady=2, relief='raised',
+                        command=lambda: entry_1.insert('end', '%'))
 button_modulus.grid(row=4, column=3)
-button_plus = Button(text='+', width=10, height=2, padx=2, pady=2, relief='raised', command=lambda: entry_1.insert('end','+'))
+button_plus = Button(win, text='+', width=10, height=2, padx=2, pady=2, relief='raised',
+                     command=lambda: entry_1.insert('end', '+'))
 button_plus.grid(row=4, column=4)
-button_3 = Button(text='3', width=10, height=2, padx=2, pady=2, relief='raised', command=lambda: entry_1.insert('end', '3'))
+button_3 = Button(win, text='3', width=10, height=2, padx=2, pady=2, relief='raised',
+                  command=lambda: entry_1.insert('end', '3'))
 button_3.grid(row=5, column=0, columnspan=1)
-button_2 = Button(text='2', width=10, height=2, padx=2, pady=2, relief='raised', command=lambda: entry_1.insert('end', '2'))
+button_2 = Button(win, text='2', width=10, height=2, padx=2, pady=2, relief='raised',
+                  command=lambda: entry_1.insert('end', '2'))
 button_2.grid(row=5, column=1)
-button_1 = Button(text='1', width=10, height=2, padx=2, pady=2, relief='raised', command=lambda: entry_1.insert('end', '1'))
+button_1 = Button(win, text='1', width=10, height=2, padx=2, pady=2, relief='raised',
+                  command=lambda: entry_1.insert('end', '1'))
 button_1.grid(row=5, column=2)
-button_C = Button(text='C', width=10, height=2, padx=2, pady=2, relief='raised', command=clear_entry)
+button_C = Button(win, text='C', width=10, height=2, padx=2, pady=2, relief='raised', command=clear_entry)
 button_C.grid(row=5, column=3)
-button_minus = Button(text='-', width=10, height=2, padx=2, pady=2, relief='raised', command=lambda: entry_1.insert('end','-'))
+button_minus = Button(win, text='-', width=10, height=2, padx=2, pady=2, relief='raised',
+                      command=lambda: entry_1.insert('end', '-'))
 button_minus.grid(row=5, column=4)
-button_0 = Button(text='0', width=10, height=2, padx=2, pady=2, relief='raised', command=lambda: entry_1.insert('end', '0'))
+button_0 = Button(win, text='0', width=10, height=2, padx=2, pady=2, relief='raised',
+                  command=lambda: entry_1.insert('end', '0'))
 button_0.grid(row=6, column=0, columnspan=1)
-button_equal = Button(text='=', width=10, height=2, padx=2, pady=2, relief='raised', command=equal)
+button_equal = Button(win, text='=', width=10, height=2, padx=2, pady=2, relief='raised', command=equal)
 button_equal.grid(row=6, column=1)
-button_divide = Button(text='/', width=10, height=2, padx=2, pady=2, relief='raised', command=lambda: entry_1.insert('end','/'))
+button_divide = Button(win, text='/', width=10, height=2, padx=2, pady=2, relief='raised',
+                       command=lambda: entry_1.insert('end', '/'))
 button_divide.grid(row=6, column=2)
-button_quit = Button(text='quit', width=10, height=2, padx=2, pady=2, relief='raised', command=quit_)
+button_quit = Button(win, text='quit', width=10, height=2, padx=2, pady=2, relief='raised', command=quit_)
 button_quit.grid(row=6, column=3)
-button_point = Button(text='.', width=10, height=2, padx=2, pady=2, relief='raised', command=lambda : entry_1.insert('end', '.'))
+button_point = Button(win, text='.', width=10, height=2, padx=2, pady=2, relief='raised',
+                      command=lambda: entry_1.insert('end', '.'))
 button_point.grid(row=6, column=4)
-
-
 
 win.mainloop()
